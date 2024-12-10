@@ -1,9 +1,56 @@
+import java.util.Scanner;
+
 public class App {
-    static void displayData() {
-        System.out.println("=== DATA INVENTORI BARANG ===");
+
+    static void tampilData(String stok[][]) {
+        System.out.println("==== DATA INVENTORI BARANG ====");
+        System.out.printf("%-14s %-14s %-14s %-15s\n",
+                    "No", "Nama item", "Kategori", "Stok");
+        System.out.println("-------------------------------------------------");
+        for (int i = 0; i < stok.length; i++) {
+            for (int j = 0; j < stok[i].length; j++) {
+                System.out.printf("%-15s", stok[i][j]);
+            }
+            System.out.println();
+        }
+        
     }
 
+
+
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        Scanner sc = new Scanner(System.in);
+    
+        String[][] stok = {
+                {"1", "Kopi hitam", "Minuman", "10"},
+                {"2", "Cappucino", "Minuman", "5"},
+                {"3", "Teh tarik", "Minuman", "8"}};
+
+        while (true) { 
+            System.out.println("==== MENU INVENTORI ====");
+            System.out.println("1. Tampilkan item yang ada");
+            System.out.println("2. Tambah stok untuk item yang ada");
+            System.out.println("3. Tambah item baru");
+            System.out.println("4. Keluar");
+            System.out.print("Masukkan menu : ");
+            int menu = sc.nextInt();
+
+            sc.nextLine();
+
+            if (menu == 1) {
+                tampilData(stok);
+            } else if (menu == 2) {
+
+            } else if (menu == 3) {
+
+            } else if (menu == 4) {
+                System.out.println("Keluar Program Inventori, TERIMKASIH");
+                break;
+            }
+        }
+                
     }
+
+
+
 }
