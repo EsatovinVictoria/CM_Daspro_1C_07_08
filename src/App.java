@@ -18,6 +18,7 @@ public class App {
 
 
     static void tambahtStokData(String[][] stok, Scanner sc) {
+        System.out.println("==== TAMBAH STOK ====");
 
         System.out.print("Masukkan nomor item : ");
         int nomorItem = sc.nextInt();
@@ -35,6 +36,28 @@ public class App {
             }
         } else {
             System.out.println("Item tidak ditemukan.");
+        }
+    }
+
+
+    static String[][] tambahItem(String[][] stok, Scanner sc) {
+        System.out.println("==== TAMBAH ITEM BARU ====");
+
+        System.out.print("Masukkan nama item : ");
+        String namaItemBaru = sc.nextLine();
+        System.out.print("Masukkan kategori : ");
+        String kategoriItemBaru = sc.nextLine();
+        System.out.print("Masukkan jumlah stok awal : ");
+        int stokAwal = sc.nextInt();
+
+        if(stokAwal > 0) {
+            String[][] stokBaru = new String [stok.length+1][3];
+            for (int i = 0; i < stokBaru.length; i++) {
+                stokBaru[i] = stok[i];
+            }
+            stokBaru[stok.length] = new String[]
+        } else {
+
         }
     }
 
