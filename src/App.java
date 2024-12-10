@@ -1,5 +1,4 @@
 public class App {
-
     static void displayData() {
         System.out.println("=== DATA INVENTORI BARANG ===");
     }
