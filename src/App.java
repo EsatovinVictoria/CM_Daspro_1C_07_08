@@ -32,7 +32,7 @@ public class App {
                 stok[nomorItem - 1][3] = Integer.toString(stokTerkini + jmlStokTambahan);
                 System.out.println("Stok " + stok[nomorItem-1][1] + " berhasil ditambahkan. Jumlah stok sekarang : " + stok[nomorItem-1][3]);
             } else {
-                System.out.println("Inputan invalid! Jumlah stok harus lebih dari 0.");
+                System.out.println("Inputan invalid! Jumlah stok tambahan harus lebih dari 0!");
             }
         } else {
             System.out.println("Item tidak ditemukan.");
@@ -40,27 +40,37 @@ public class App {
     }
 
 
-    static String[][] tambahItem(String[][] stok, Scanner sc) {
-        System.out.println("==== TAMBAH ITEM BARU ====");
+    static String[][] tambahItemBaru(String[][] stok, Scanner sc) {
 
-        System.out.print("Masukkan nama item : ");
-        String namaItemBaru = sc.nextLine();
-        System.out.print("Masukkan kategori : ");
-        String kategoriItemBaru = sc.nextLine();
-        System.out.print("Masukkan jumlah stok awal : ");
-        int stokAwal = sc.nextInt();
+            System.out.println("==== TAMBAH ITEM BARU ====");
 
-        if(stokAwal > 0) {
-            String[][] stokBaru = new String [stok.length+1][3];
-            for (int i = 0; i < stokBaru.length; i++) {
-                stokBaru[i] = stok[i];
+            System.out.print("Masukkan nama item : ");
+            String namaItemBaru = sc.nextLine();
+            System.out.print("Masukkan kategori : ");
+            String kategoriItemBaru = sc.nextLine();
+            System.out.print("Masukkan jumlah stok awal : ");
+            int stokAwal = sc.nextInt();
+
+            if(stokAwal > 0) {
+                String[][] stokBaru = new String [stok.length+1][4];
+                for (int i = 0; i < stok.length; i++) {
+                    stokBaru[i] = stok[i];
+                }
+                stokBaru[stok.length] = new String[] { Integer.toString(stok.length + 1), namaItemBaru, kategoriItemBaru, Integer.toString(stokAwal) };
+                System.out.println("Item berhasil ditambahkan : " + namaItemBaru + " (" + kategoriItemBaru + ") - Stok : " + stokAwal );
+
+                if (stok.length > 10) {
+                    System.out.println("Barang yang diinput telah mencapai maksimum!");
+                    
+                }
+                return stokBaru;
+            } else {
+                System.out.println("Stok yang dimasukkan harus lebih dari 0!");
+                return stok;
             }
-            stokBaru[stok.length] = new String[]
-        } else {
 
-        }
+        
     }
-
 
 
     public static void main(String[] args) throws Exception {
@@ -87,13 +97,17 @@ public class App {
             } else if (menu == 2) {
                 tambahtStokData(stok, sc);
             } else if (menu == 3) {
-
+                stok = tambahItemBaru(stok, sc);
             } else if (menu == 4) {
                 System.out.println("Keluar Program Inventori, TERIMKASIH");
                 break;
+            } else {
+                System.out.println("Silahkan input menu dengan benar!");
+                continue;
             }
         }
                 
     }
 
+  
 }
